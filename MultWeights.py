@@ -35,8 +35,9 @@ class MultiplicativeWeights(ABC):
         self.weights-=max_wt
         self.weights+=1
         min_wt = np.min(self.weights)
+        #FIXED
         if min_wt<2**(-20):
-            self.weights[self.weights<min_wt]=2**(-20)
+            self.weights[self.weights<2**(-20)]=2**(-20)
 
     def get_outcome(self, data :  Dict[str,Any], t : int):
         assert 0 < t < len(data['open'])
